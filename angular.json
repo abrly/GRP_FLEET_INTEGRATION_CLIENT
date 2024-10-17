@@ -27,8 +27,12 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",    
+              "node_modules/font-awesome/css/font-awesome.min.css"                        
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -85,12 +89,16 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "src/styles.scss"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

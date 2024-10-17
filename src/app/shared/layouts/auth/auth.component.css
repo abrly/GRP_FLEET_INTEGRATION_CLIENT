@@ -1,0 +1,31 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  mat-card {
+    width: 300px;
+    padding: 20px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  mat-card-title {
+    text-align: center;
+  }
+
+
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://www.dgw.gov.ae/Style%20Library/DGW/images/logo-dubai-gov-wshop.svg');
+    background-size: cover;
+  }

@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AuthGaurd } from './core/services/auth.guard';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  providers: [AuthGaurd],
+  imports: [RouterModule],
 })
 export class AppComponent {
-  title = 'ngGRPFleetIntegrationClient';
+  title = 'image-project';
 }
