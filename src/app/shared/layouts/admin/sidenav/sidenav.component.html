@@ -1,17 +1,30 @@
+      <mat-nav-list>
+        @for (group of menuItems; track group)
+        {
+        <ng-container>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ group.group }}</mat-panel-title>
+            </mat-expansion-panel-header>
 
-    <mat-list role="list" class="sidebar" color="primary">
-      <!--  <mat-list-item role="listitem">Item 1</mat-list-item>
-        <mat-list-item role="listitem">Item 2</mat-list-item>
-        <mat-list-item role="listitem">Item 3</mat-list-item> -->
+            @for (item of group.items; track item)
+            {
+  
+            <ng-container>
+              <a mat-list-item [routerLink]="item.route" (click)="onMenuClick(item.title)" >
+                <mat-icon>{{ item.icon }}</mat-icon>
+                <span>{{ item.label }}</span>
+              </a>
+            </ng-container>
+          }
 
-        <a mat-list-item>
-            <span class="entry">
-              <mat-icon>house</mat-icon>
-              <span>Dashboard</span>
-            </span>
-          </a>
+          </mat-expansion-panel>
+        </ng-container>
+      }
+      </mat-nav-list>
+    
+  
 
-    </mat-list>
-
-
+  
+    
     

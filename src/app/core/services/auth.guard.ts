@@ -6,12 +6,16 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class AuthGaurd implements CanActivate {
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   
   canActivate() {
-    if (this.auth.authenticated) {
+    if (this.authService.isAuthenticated()) {
+
+      this.authService.setAuthSignals();
+
       return true;
+      
     } else {
       return this.router.navigateByUrl('/session/sign-in');
     }

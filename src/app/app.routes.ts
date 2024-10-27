@@ -11,6 +11,16 @@ const adminRoutes: Routes = [
     path: 'export',
     loadChildren: () =>
       import('./view/export/export.routes').then((m) => m.routes),
+  },  
+  {
+    path: 'reset',
+    loadChildren: () =>
+      import('./view/reset/reset.routes').then((m) => m.routes),
+  },  
+  {
+    path: 'logs',
+    loadChildren: () =>
+      import('./view/logs/logs.routes').then((m) => m.routes),
   },
 ];
 

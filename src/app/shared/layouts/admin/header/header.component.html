@@ -2,12 +2,20 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidebar()" >
     <mat-icon>menu</mat-icon>
   </button>
-  <span color="primary">GRP-FLEET Integration</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
+  <span color="primary">GRP LPO Flow</span>
+
+  <span class="title">
+    <h1>{{ activeMenu }}</h1>
+  </span> 
+
+  <span class="example-spacer">
+    {{ loggedInUserGreetings }}
+  </span>
+  &nbsp;&nbsp;
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with logout icon" (click)="onLogout()">
+    <mat-icon>logout</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+ <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
-  </button>
+  </button> -->
 </mat-toolbar>

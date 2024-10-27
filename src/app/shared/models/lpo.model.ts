@@ -7,6 +7,8 @@ export class LPO {
     LineNo: number;
     PartNo: string;
     PartSuffix: number;
+    PartDescription:string;
+    PartKeyword:string;
     QtyReceived: number;
     UnitPrice: number;
     OrderPrice: number;
@@ -30,6 +32,8 @@ export class LPO {
       LineNo: number,
       PartNo: string,
       PartSuffix: number,
+      PartDescription:string,
+      PartKeyword:string,
       QtyReceived: number,
       UnitPrice: number,
       OrderPrice: number,
@@ -52,6 +56,8 @@ export class LPO {
       this.LineNo = LineNo;
       this.PartNo = PartNo;
       this.PartSuffix = PartSuffix;
+      this.PartDescription=PartDescription;
+      this.PartKeyword=PartKeyword;
       this.QtyReceived = QtyReceived;
       this.UnitPrice = UnitPrice;
       this.OrderPrice = OrderPrice;

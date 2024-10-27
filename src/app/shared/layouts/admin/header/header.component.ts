@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, effect, inject, OnInit } from '@angular/core';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
 import { DataService } from '../../../../core/services/data.service';
+import { AuthService } from '../../../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +16,11 @@ import { DataService } from '../../../../core/services/data.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent  {
 
   private dataService = inject(DataService);
+
+  private authService = inject(AuthService);
 
   toggleSidebar() {
 
@@ -25,5 +29,37 @@ export class HeaderComponent {
       this.dataService.setDrawerStatus(!drawerStatus)
      
   }
+
+  loggedInUserGreetings= ` Hi!  ${this.authService.loggedInUserName()} ` 
+
+
+  constructor(private router: Router){
+
+    
+    effect(() => {
+
+      this.loggedInUserGreetings= ` Hi!  ${this.authService.loggedInUserName()} ` 
+
+    
+    }); 
+
+
+
+  }
+
+  get activeMenu(){
+    return this.dataService.selectedMenu();
+   }
+  
+ 
+  onLogout(){
+
+    this.authService.logout();
+
+    this.router.navigateByUrl('/session/sign-in');
+
+
+  }
+
 
 }

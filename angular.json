@@ -27,8 +27,10 @@
               }
             ],
             "styles": [
-              "src/styles.scss",    
-              "node_modules/font-awesome/css/font-awesome.min.css"                        
+              "node_modules/font-awesome/css/font-awesome.min.css",  
+              "src/styles.scss",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css" 
+                                   
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src"]

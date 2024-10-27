@@ -12,3 +12,78 @@
     gap: 1rem;
     padding:0.75rem;
 }
+
+/* Container styling */
+.sidenav-container {
+    height: 100vh;
+  }
+  
+  .sidenav {
+    width: 280px;
+    background-color: #f4f5f7;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Panel styling */
+  mat-expansion-panel {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  mat-expansion-panel-header {
+    padding: 0 16px;
+    background-color: #f8f9fa;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  mat-panel-title {
+    font-size: 16px;
+  }
+  
+  /* Link styling */
+  a.mat-list-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: #555;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  a.mat-list-item:hover {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  a.mat-list-item mat-icon {
+    margin-right: 12px;
+    font-size: 20px;
+  }
+  
+  a.mat-list-item span {
+    font-size: 14px;
+  }
+  
+  /* Add spacing between groups */
+  mat-expansion-panel + mat-expansion-panel {
+    margin-top: 8px;
+  }
+  
+  /* Sidenav content padding */
+  mat-sidenav-content {
+    padding: 24px;
+    background-color: #f0f2f5;
+  }
+  
+  /* Custom scrollbar for sidenav */
+  .sidenav::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .sidenav::-webkit-scrollbar-thumb {
+    background-color: #b0b3b8;
+    border-radius: 4px;
+  }
+  

@@ -2,15 +2,22 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'lpo',
+    path: 'receipt',
     loadComponent: () =>
-      import('./lpo/lpo.component').then(
-        (m) => m.LpoComponent
+      import('./receipt/receipt.component').then(
+        (m) => m.LpoReceiptComponent
+      ),
+  },
+  {
+    path: 'cmls',
+    loadComponent: () =>
+      import('./cmls/cmls.component').then(
+        (m) => m.CmlsComponent
       ),
   },
   {
     path: '',
-    redirectTo: 'lpo',
+    redirectTo: 'receipt',
     pathMatch: 'full',
   },
 ];

@@ -27,6 +27,7 @@ import { AuthService } from '../../../core/services/auth.service';
 export class SignInComponent implements OnInit {
 
   signinForm: FormGroup = {} as FormGroup;
+
   errorMessage: string = '';
 
   constructor(
@@ -34,27 +35,45 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private auth: AuthService
   ) {}
+
   ngOnInit(): void {
+
     this.buildBasicForm();
     localStorage.clear();
+
   }
 
   buildBasicForm() {
     this.signinForm = this.fb.group({
-      email: ['test@example.com', [Validators.required, Validators.email]],
-      password: ['1234', [Validators.required, Validators.minLength(4)]],
+      username: ['dgwadmin', [Validators.required]],
+      password: ['123', [Validators.required, Validators.minLength(4)]],
     });
   }
 
   signin() {
+
     this.errorMessage = '';
-    this.auth.signin(this.signinForm.value).subscribe({
-      next: (res: any) => {
-        this.router.navigateByUrl('/export/lpo');
-      },
-      error: (err: string) => {
-        this.errorMessage = err;
-      },
-    });
+
+    if (this.signinForm.valid) {
+
+
+      this.auth.logIn(this.signinForm.value).subscribe({
+        next: (res: any) => {
+
+          this.router.navigateByUrl('/export/receipt');
+          
+        },
+        error: (err: string) => {
+
+          console.log('did you hitm 2');
+
+
+          this.errorMessage = err;
+        },
+      });
+
+
+    }
+
   }
 }
