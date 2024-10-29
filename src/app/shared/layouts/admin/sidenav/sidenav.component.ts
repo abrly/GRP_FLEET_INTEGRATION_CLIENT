@@ -38,14 +38,16 @@ export class SidenavComponent {
       group: 'GRP Postings',
       items: [
         { label: 'Receipts', icon: 'house', route: '/export/receipt' , title:'GRP Postings - LPO Receipts' },      
-        { label: 'Commercials', icon: 'house', route: '/export/cmls'  , title:'GRP Postings - LPO Commercials'  }       
+        { label: 'Commercials', icon: 'house', route: '/export/cmls'  , title:'GRP Postings - LPO Commercials'  }, 
+        { label: 'Receipt Returns', icon: 'house', route: '/export/receipt_returns'  , title:'GRP Postings - LPO Receipt Returns'  }           
       ]
     },
     {
       group: 'Reset GRP Postings',
       items: [
         { label: 'Reset Receipts', icon: 'settings', route: '/reset/reset_receipt' , title:'Reset GRP Postings - LPO Receipts' },
-        { label: 'Reset Commercials', icon: 'settings', route: '/reset/reset_cmls' , title:'Reset GRP Postings - LPO Commercials' }    
+        { label: 'Reset Commercials', icon: 'settings', route: '/reset/reset_cmls' , title:'Reset GRP Postings - LPO Commercials' },
+        { label: 'Reset Receipt Returns', icon: 'settings', route: '/reset/reset_receipt_returns' , title:'Reset GRP Postings - LPO Receipt Returns' }     
       ]
     },
     {

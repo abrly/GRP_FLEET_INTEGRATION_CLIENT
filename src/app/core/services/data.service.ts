@@ -6,6 +6,7 @@ import LPOApiResponse from '../../shared/models/receipt_api_response.model';
 import ApiResponse from '../../shared/models/api_response.model';
 import ReceiptApiResponse from '../../shared/models/receipt_api_response.model';
 import CMLApiResponse from '../../shared/models/cml_api_response.model';
+import LogApiResponse from '../../shared/models/log_api_response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,13 @@ export class DataService {
   drawerStatus=signal<boolean>(true);
 
   fetchLpoRef=signal<string>("");
+
+  fetchLogCriteria=signal<{fromdt:string,todt:string}>({fromdt:"",todt:""});
+
+  fetchLogFromDt=signal<string | null>(null);
+  fetchLogToDt=signal<string | null>(null);
+  fetchLogCategory=signal<string | null>(null);
+  fetchLogSelectionDone=signal<boolean>(false);
 
 
   appMessageDialogContent=signal<string>("");
@@ -187,6 +195,127 @@ export class DataService {
 
   }
 
+
+
+  //#endregion
+
+
+   //#region "post receipt returns"
+
+   getPODetailsFromFleet4ReceiptReturnsXport(
+    lpoNo: string,
+    sortColumn: string = 'LineNo',      
+    sortDirection: string = 'ASC',      
+    pageNumber: number = 1,             
+    pageSize: number = 10                
+  ): Observable<ReceiptApiResponse> {
+
+
+     let params = new HttpParams()
+      .set('SortColumn', sortColumn)
+      .set('SortDirection', sortDirection)
+      .set('PageNumber', pageNumber.toString())
+      .set('PageSize', pageSize.toString());
+
+      return this.httpService.get<ReceiptApiResponse>(`${this.baseURL}po/getPODetails4ReceiptReturnsXport/${lpoNo}`, { params });
+
+  }
+
+  postReceiptReturns2GRP(data:any): Observable<ApiResponse> {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json' 
+    });
+    
+    return this.httpService.post<ApiResponse>(`${this.baseURL}po/postreceiptReturns`,data,{ headers });
+
+  }
+
+
+  //#endregion
+
+  //#region reset receipt returns
+
+  getPODetailsFromFleet4ResetReceiptReturnsXport(
+    lpoNo: string,
+    sortColumn: string = 'LineNo',      
+    sortDirection: string = 'ASC',      
+    pageNumber: number = 1,             
+    pageSize: number = 10                
+  ): Observable<LPOApiResponse> {
+
+
+     let params = new HttpParams()
+      .set('SortColumn', sortColumn)
+      .set('SortDirection', sortDirection)
+      .set('PageNumber', pageNumber.toString())
+      .set('PageSize', pageSize.toString());
+
+      return this.httpService.get<LPOApiResponse>(`${this.baseURL}po/getPODetails4ResetReceiptReturnsXport/${lpoNo}`, { params });
+
+  }
+
+
+  
+  resetReceiptReturns2GRP(data:any): Observable<ApiResponse> {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json' 
+    });
+    
+    return this.httpService.post<ApiResponse>(`${this.baseURL}po/resetReceiptReturns`,data,{ headers });
+
+  }
+
+  //#endregion
+
+  //#region   logs
+
+
+  getPostingLogs(
+    fromdate: string,
+    todate:string,
+    sortColumn: string = 'CreatedOn',      
+    sortDirection: string = 'Desc',      
+    pageNumber: number = 1,             
+    pageSize: number = 10                
+  ): Observable<LogApiResponse> {
+
+
+     let params = new HttpParams()
+      .set('fromdate', fromdate)
+      .set('todate', todate)
+      .set('SortColumn', sortColumn)
+      .set('SortDirection', sortDirection)
+      .set('PageNumber', pageNumber.toString())
+      .set('PageSize', pageSize.toString());
+
+      return this.httpService.get<LogApiResponse>(`${this.baseURL}po/getPostingLogs`, { params });
+
+  }
+
+
+  getPostingResetLogs(
+    fromdate: string,
+    todate:string,
+    sortColumn: string = 'CreatedOn',      
+    sortDirection: string = 'Desc',      
+    pageNumber: number = 1,             
+    pageSize: number = 10                
+  ): Observable<LogApiResponse> {
+
+
+     let params = new HttpParams()
+      .set('fromdate', fromdate)
+      .set('todate', todate)
+      .set('SortColumn', sortColumn)
+      .set('SortDirection', sortDirection)
+      .set('PageNumber', pageNumber.toString())
+      .set('PageSize', pageSize.toString());
+
+      return this.httpService.get<LogApiResponse>(`${this.baseURL}po/getPostingResetLogs`, { params });
+
+  }
 
 
   //#endregion
