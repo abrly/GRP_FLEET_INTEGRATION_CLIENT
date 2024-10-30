@@ -17,3 +17,58 @@ $myapp-theme: mat.m2-define-light-theme((
 
 @include mat.all-component-themes($myapp-theme);
 
+/* src/styles.css or src/styles.scss */
+
+
+/* Basic Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global Font and Color */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: gray;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Container Padding */
+.container {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+
+
+
+
+

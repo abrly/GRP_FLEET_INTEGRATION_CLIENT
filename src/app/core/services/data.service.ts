@@ -7,6 +7,7 @@ import ApiResponse from '../../shared/models/api_response.model';
 import ReceiptApiResponse from '../../shared/models/receipt_api_response.model';
 import CMLApiResponse from '../../shared/models/cml_api_response.model';
 import LogApiResponse from '../../shared/models/log_api_response.model';
+import SummaryApiResponse from '../../shared/models/summary_api_response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,10 @@ export class DataService {
 
   appMessageDialogClosed=signal<boolean>(false);
 
+
+  postingTypeId=signal<string>("");
+  isReset=signal<string>("");
+
  
   setDrawerStatus(status: boolean){   
 
@@ -52,6 +57,28 @@ export class DataService {
 
 
   lpoData = signal< ReceiptApiResponse| {}>({}); 
+
+  // region "summary"
+
+
+  GetPostingDataTotalRecs(
+    lpoNo: string,
+    postingTypeId:string,
+    isReset:string    
+  ): Observable<SummaryApiResponse> {
+
+     let params = new HttpParams()
+      .set('postingTypeId', postingTypeId.toString())
+      .set('isReset', isReset.toString());
+
+
+      return this.httpService.get<SummaryApiResponse>(`${this.baseURL}po/getPostingDataTotalRecs/${lpoNo}`, { params });
+
+  }
+
+
+
+  // end region
 
 
   //#region "post receipts"

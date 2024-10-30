@@ -47,11 +47,6 @@ export class HeaderComponent  {
 
   }
 
-  get activeMenu(){
-    return this.dataService.selectedMenu();
-   }
-  
- 
   onLogout(){
 
     this.authService.logout();

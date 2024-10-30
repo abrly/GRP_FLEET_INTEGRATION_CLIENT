@@ -46,7 +46,7 @@ export class SignInComponent implements OnInit {
   buildBasicForm() {
     this.signinForm = this.fb.group({
       username: ['dgwadmin', [Validators.required]],
-      password: ['123', [Validators.required, Validators.minLength(4)]],
+      password: ['test99', [Validators.required, Validators.minLength(4)]],
     });
   }
 

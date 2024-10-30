@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
 import Menu from '../../../models/menu.model';
@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
 import { DataService } from '../../../../core/services/data.service';
 
 import { MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle } from '@angular/material/expansion';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,48 +16,68 @@ import { MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle } from
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.css'
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
 
   private dataService = inject(DataService);
+  private authService = inject(AuthService);
 
+  menuItems: { group: string, items: Menu[] }[] = [];
+ 
+  
 
-  /*menuItems: Menu[] = [
+  ngOnInit(): void {
+    
+    if (this.authService.getUserRoleName()=="Admin"){
 
-    { label: 'Export LPO Receipts', icon: 'house', route: '/export/receipt' },
-    { label: 'Reset LPO Receipts', icon: 'settings', route: '/reset/reset_receipt' },
-    { label: 'Export LPO CMLs', icon: 'house', route: '/export/cmls' },
-    { label: 'Reset LPO CMLs', icon: 'settings', route: '/reset/reset_cmls' },
-    { label: 'Profile', icon: 'person', route: '/profile' },
-    { label: 'Orders', icon: 'shopping_cart', route: '/orders' },
-    { label: 'Reports', icon: 'assessment', route: '/reports' },
-    { label: 'Help', icon: 'help', route: '/help' }
-   
-  ];*/
+      this.menuItems = [
+        {
+          group: 'GRP Postings',
+          items: [
+            { label: 'Receipts', icon: 'receipt', route: '/export/receipt' , title:'GRP Postings - Receipts' },      
+            { label: 'Commercials', icon: 'account_balance', route: '/export/cmls'  , title:'GRP Postings - Commercials'  }, 
+            { label: 'Receipt Returns', icon: 'flip_to_back', route: '/export/receipt_returns'  , title:'GRP Postings - Receipt Returns'  }           
+          ]
+        },
+        {
+          group: 'Reset GRP Postings',
+          items: [
+            { label: 'Reset Receipts', icon: 'receipt', route: '/reset/reset_receipt' , title:'Reset GRP Postings - Receipts ' },
+            { label: 'Reset Commercials', icon: 'account_balance', route: '/reset/reset_cmls' , title:'Reset GRP Postings - Commercials' },
+            { label: 'Reset Receipt Returns', icon: 'flip_to_back', route: '/reset/reset_receipt_returns' , title:'Reset GRP Postings - Receipt Returns' }     
+          ]
+        },
+        {
+          group: 'Utility',
+          items: [
+            { label: 'Logs', icon: 'track_changes', route: '/logs' , title:'Activity Log' }      
+          ]
+        }
+      ];
+    
 
-  menuItems: { group: string, items: Menu[] }[] = [
-    {
-      group: 'GRP Postings',
-      items: [
-        { label: 'Receipts', icon: 'house', route: '/export/receipt' , title:'GRP Postings - LPO Receipts' },      
-        { label: 'Commercials', icon: 'house', route: '/export/cmls'  , title:'GRP Postings - LPO Commercials'  }, 
-        { label: 'Receipt Returns', icon: 'house', route: '/export/receipt_returns'  , title:'GRP Postings - LPO Receipt Returns'  }           
-      ]
-    },
-    {
-      group: 'Reset GRP Postings',
-      items: [
-        { label: 'Reset Receipts', icon: 'settings', route: '/reset/reset_receipt' , title:'Reset GRP Postings - LPO Receipts' },
-        { label: 'Reset Commercials', icon: 'settings', route: '/reset/reset_cmls' , title:'Reset GRP Postings - LPO Commercials' },
-        { label: 'Reset Receipt Returns', icon: 'settings', route: '/reset/reset_receipt_returns' , title:'Reset GRP Postings - LPO Receipt Returns' }     
-      ]
-    },
-    {
-      group: 'Logs',
-      items: [
-        { label: 'Logs', icon: 'settings', route: '/logs' , title:'Logs' }      
-      ]
     }
-  ];
+    else{
+
+      this.menuItems = [
+        {
+          group: 'GRP Postings',
+          items: [
+            { label: 'Receipts', icon: 'receipt', route: '/export/receipt' , title:'Receipt GRP Postings' },      
+            { label: 'Commercials', icon: 'account_balance', route: '/export/cmls'  , title:'Commercial GRP Postings'  }, 
+            { label: 'Receipt Returns', icon: 'flip_to_back', route: '/export/receipt_returns'  , title:'Receipt Returns GRP Postings'  }           
+          ]
+        },
+        {
+          group: 'Utility',
+          items: [
+            { label: 'Logs', icon: 'track_changes', route: '/logs' , title:'Activity Log' }      
+          ]
+        }
+      ];
+
+    }
+
+  }
   
 
 
