@@ -49,7 +49,7 @@ export class SidenavComponent implements OnInit {
         {
           group: 'Utility',
           items: [
-            { label: 'Logs', icon: 'track_changes', route: '/logs' , title:'Activity Log' }      
+            { label: 'Activity Log', icon: 'track_changes', route: '/logs' , title:'Activity Log' }      
           ]
         }
       ];
@@ -70,7 +70,7 @@ export class SidenavComponent implements OnInit {
         {
           group: 'Utility',
           items: [
-            { label: 'Logs', icon: 'track_changes', route: '/logs' , title:'Activity Log' }      
+            { label: 'Activity Log', icon: 'track_changes', route: '/logs' , title:'Activity Log' }      
           ]
         }
       ];
@@ -84,6 +84,7 @@ export class SidenavComponent implements OnInit {
   onMenuClick(menu:string){
     this.dataService.fetchLpoRef.set("");
     this.dataService.setActiveMenu(menu);
+    this.dataService.fetchLogSelectionDone.set(false);
   }
 
 }

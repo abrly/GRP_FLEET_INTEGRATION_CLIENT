@@ -5,7 +5,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient,withInterceptorsFromDi } from '@an
 import { routes } from './app.routes';
 import { AuthInterceptor } from './core/services/interceptors/auth.interceptor';
 
-
+import { LOCALE_ID } from '@angular/core';
 
 
 export const appConfig: ApplicationConfig = {
@@ -15,7 +15,8 @@ export const appConfig: ApplicationConfig = {
               provideRouter(routes),
               provideAnimations(),
               provideHttpClient(withInterceptorsFromDi()),
-              {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},       
+              {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},  
+              { provide: LOCALE_ID, useValue: 'en-US' }      
             
          ]
 };

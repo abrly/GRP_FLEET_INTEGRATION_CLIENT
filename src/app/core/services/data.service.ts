@@ -37,6 +37,8 @@ export class DataService {
   fetchLogFromDt=signal<string | null>(null);
   fetchLogToDt=signal<string | null>(null);
   fetchLogCategory=signal<string | null>(null);
+  fetchLogPostingTypeId=signal<string | null>(null);
+  fetchLogLpoRefNo=signal<string | null>(null);
   fetchLogSelectionDone=signal<boolean>(false);
 
 
@@ -305,7 +307,9 @@ export class DataService {
     sortColumn: string = 'CreatedOn',      
     sortDirection: string = 'Desc',      
     pageNumber: number = 1,             
-    pageSize: number = 10                
+    pageSize: number = 10 ,
+    postingTypeId: string = 'ALL',
+    lpoRefNo: string = ''                      
   ): Observable<LogApiResponse> {
 
 
@@ -315,7 +319,9 @@ export class DataService {
       .set('SortColumn', sortColumn)
       .set('SortDirection', sortDirection)
       .set('PageNumber', pageNumber.toString())
-      .set('PageSize', pageSize.toString());
+      .set('PageSize', pageSize.toString())
+      .set('postingTypeId', postingTypeId.toString())
+      .set('lpoRef', lpoRefNo.toString());
 
       return this.httpService.get<LogApiResponse>(`${this.baseURL}po/getPostingLogs`, { params });
 
@@ -328,7 +334,9 @@ export class DataService {
     sortColumn: string = 'CreatedOn',      
     sortDirection: string = 'Desc',      
     pageNumber: number = 1,             
-    pageSize: number = 10                
+    pageSize: number = 10 ,
+    postingTypeId: string = 'ALL',
+    lpoRefNo: string = ''                        
   ): Observable<LogApiResponse> {
 
 
@@ -338,8 +346,9 @@ export class DataService {
       .set('SortColumn', sortColumn)
       .set('SortDirection', sortDirection)
       .set('PageNumber', pageNumber.toString())
-      .set('PageSize', pageSize.toString());
-
+      .set('PageSize', pageSize.toString())
+      .set('postingTypeId', postingTypeId.toString())
+      .set('lpoRef', lpoRefNo.toString());
       return this.httpService.get<LogApiResponse>(`${this.baseURL}po/getPostingResetLogs`, { params });
 
   }

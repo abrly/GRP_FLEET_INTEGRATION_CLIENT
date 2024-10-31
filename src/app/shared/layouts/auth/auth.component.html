@@ -1,21 +1,38 @@
-<div class="login-container">
-   <!-- <mat-card>
+<!-- <div class="login-container">
+ 
+    <mat-card class="example-card" appearance="outlined" >
+     
       <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
-      </mat-card-header>
-      
-      <mat-card-content>
-        <router-outlet></router-outlet>
-      </mat-card-content>
-    </mat-card>-->
-    <mat-card class="example-card" appearance="outlined">
-      <!--  <img mat-card-image width="150px" height="75px" src="https://www.dgw.gov.ae/Style%20Library/DGW/images/logo-dubai-gov-wshop.svg" alt="Photo of a Shiba Inu"> -->
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>GRP LPO Flow - LOGIN </mat-card-title>         
-        </mat-card-header>        
+        <img mat-card-image width="250px" height="200px" src="https://www.dgw.gov.ae/Style%20Library/DGW/images/logo-dubai-gov-wshop.svg" alt="logo of dgw"> 
+           
+          <mat-card-title> GRP LPO Flow - LOGIN</mat-card-title>         
+        </mat-card-header>      
         <mat-card-content>
+
+          
             <router-outlet></router-outlet>
         </mat-card-content>      
-      </mat-card>
+      </mat-card>   
+  </div> -->
+ 
+
+ 
+
+  <div class="login-container">
+    <mat-card appearance="outlined">
+      <mat-toolbar color="primary">
+
+        <div class="appTitle">
+           GRP LPO FLOW - LOGIN 
+        </div>
+        
+      </mat-toolbar>
+      <br>
+      <img class="example-header-image" src="https://www.dgw.gov.ae/Style%20Library/DGW/images/logo-dubai-gov-wshop.svg" alt="logo of dgw" />
+      <br>
+      
+      <mat-card-content>       
+        <router-outlet></router-outlet>
+      </mat-card-content>
+    </mat-card>
   </div>

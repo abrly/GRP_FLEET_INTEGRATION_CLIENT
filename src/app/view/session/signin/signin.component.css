@@ -1,5 +1,5 @@
 .container {
-    margin-top: 50px;
+    margin-top: 5px;
   }
   
   .card {
@@ -28,4 +28,19 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+
+
+  button {
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  mat-form-field {
+    margin-bottom: 15px;
   }
