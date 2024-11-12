@@ -32,6 +32,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path:'session/sign-in',
+    redirectTo: 'session/sign-in',
+    pathMatch: 'full',
+  },
+  {
     path: '',
     loadComponent: () =>
       import('./shared/layouts/auth/auth.component').then(

@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';

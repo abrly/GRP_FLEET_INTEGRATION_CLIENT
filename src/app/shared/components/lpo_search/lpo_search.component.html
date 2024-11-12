@@ -1,0 +1,18 @@
+
+      <form [formGroup]="getLpoForm" (ngSubmit)="onSubmit()" style="text-align: center">
+        <mat-form-field appearance="fill">
+          <mat-label>Search LPO No</mat-label>
+          <input matInput formControlName="lpono" required>
+        
+          @if (getLpoForm.get('lpono')?.hasError('required')) {
+            <mat-error>
+                LPO No is required.
+            </mat-error>
+          }
+         
+        </mat-form-field>
+    
+  
+        <button mat-raised-button color="primary" type="submit" [disabled]="getLpoForm.invalid">Go</button>
+      </form>
+   

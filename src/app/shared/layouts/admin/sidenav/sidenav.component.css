@@ -123,3 +123,27 @@ a.mat-list-item span {
   }
 }
 
+.myMenuLabel { 
+  color: gray;
+  vertical-align: top;
+ }
+
+.nav a.active-item {
+  background-color:#3d5afe;
+  color: red;
+  font-weight:normal;
+}
+
+.nav mat-icon {
+  margin-right: 8px;
+}
+
+.nav a.active-item .myMenuLabel {
+  background-color:#3d5afe;
+  color: white;
+  font-weight:normal;
+}
+
+.nav a.active-item mat-icon {
+  color:white;
+}

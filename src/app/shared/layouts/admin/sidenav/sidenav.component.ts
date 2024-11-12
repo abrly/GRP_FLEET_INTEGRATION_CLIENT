@@ -3,16 +3,17 @@ import {MatListModule} from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
 import Menu from '../../../models/menu.model';
 
-import { RouterModule } from '@angular/router'; // Import RouterModule
+import { Router, RouterModule } from '@angular/router'; // Import RouterModule
 import { DataService } from '../../../../core/services/data.service';
 
 import { MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle } from '@angular/material/expansion';
 import { AuthService } from '../../../../core/services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [RouterModule,MatListModule,MatIcon,MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle],
+  imports: [CommonModule,RouterModule,MatListModule,MatIcon,MatExpansionPanel,MatExpansionPanelHeader,MatExpansionPanelTitle],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.css'
 })
@@ -23,7 +24,14 @@ export class SidenavComponent implements OnInit {
 
   menuItems: { group: string, items: Menu[] }[] = [];
  
-  
+  selectedGroupIndex: number | null = null;
+  selectedItemIndex: number | null = null;
+
+  constructor(private router: Router){
+
+  }
+
+  openPanelIndex = 0;
 
   ngOnInit(): void {
     
@@ -66,22 +74,30 @@ export class SidenavComponent implements OnInit {
             { label: 'Commercials', icon: 'account_balance', route: '/export/cmls'  , title:'Commercial GRP Postings'  }, 
             { label: 'Receipt Returns', icon: 'flip_to_back', route: '/export/receipt_returns'  , title:'Receipt Returns GRP Postings'  }           
           ]
-        },
-        {
-          group: 'Utility',
-          items: [
-            { label: 'Activity Log', icon: 'track_changes', route: '/logs' , title:'Activity Log' }      
-          ]
         }
       ];
 
     }
 
+    this.selectedGroupIndex = 0;
+    this.selectedItemIndex = 0;
+
   }
   
 
-
+/*
   onMenuClick(menu:string){
+
+    this.dataService.fetchLpoRef.set("");
+    this.dataService.setActiveMenu(menu);
+    this.dataService.fetchLogSelectionDone.set(false);
+
+  } */
+
+
+  setActiveMenu(groupIndex: number, itemIndex: number,menu:string) {
+    this.selectedGroupIndex = groupIndex;
+    this.selectedItemIndex = itemIndex;
     this.dataService.fetchLpoRef.set("");
     this.dataService.setActiveMenu(menu);
     this.dataService.fetchLogSelectionDone.set(false);

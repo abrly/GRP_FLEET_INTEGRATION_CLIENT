@@ -1,0 +1,37 @@
+mat-card {
+    margin: 20px;
+    padding: 20px;
+  }
+
+
+  
+  mat-card {
+    margin: 20px; /* Margin around the card */
+    background-color: #f5f5f5; /* Background color for the card */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  }
+  
+  mat-card-header {
+    background-color: #e3f2fd; /* Light blue background for header */
+    padding: 16px; /* Padding for the header */
+    border-radius: 8px 8px 0 0; /* Rounded corners for the header */
+  }
+
+
+  .custom-title {
+    font-size: 20px; /* Change font size */
+    color: gray; /* Custom text color */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center align the text */
+    margin-bottom: 8px; /* Space below the title */
+  }
+
+  .custom-sub-title {
+    font-size: 16px; /* Change font size */
+    color: gray; /* Custom text color */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center align the text */
+    margin-bottom: 8px; /* Space below the title */
+  }
+  

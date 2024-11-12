@@ -29,8 +29,7 @@
             "styles": [
               "node_modules/font-awesome/css/font-awesome.min.css",  
               "src/styles.scss",
-              "node_modules/ngx-spinner/animations/ball-scale-multiple.css" 
-                                   
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"                                    
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src"]
@@ -51,7 +50,7 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all"             
             },
             "development": {
               "optimization": false,

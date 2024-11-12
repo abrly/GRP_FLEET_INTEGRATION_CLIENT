@@ -1,0 +1,56 @@
+.dialog-container {
+  max-width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Soft shadow */
+  animation: fadeInDialog 0.3s ease; /* Subtle fade-in animation */
+}
+
+/* Title Styling */
+.dialog-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: gray; /* Angular Material primary color */
+  margin: 0;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e0e0e0; /* Soft separator */
+}
+
+/* Content Styling */
+.dialog-content {
+  font-size: 16px;
+  color: gray(0, 0, 0, 0.87); /* Standard readable text color */
+  padding: 20px 24px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Actions Container Styling */
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  background-color: #f9f9f9; /* Slightly different background for contrast */
+}
+
+/* Close Button Styling */
+.dialog-close-button {
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #3f51b5; /* Primary button color */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.dialog-close-button:hover {
+  background-color: #303f9f; /* Darken on hover */
+}
+
+/* Fade-in Animation */
+@keyframes fadeInDialog {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

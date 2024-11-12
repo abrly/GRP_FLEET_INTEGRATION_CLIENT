@@ -1,0 +1,21 @@
+
+    <mat-card>
+        <mat-card-title class="custom-title">{{ activeMenu }}</mat-card-title>
+        @if(this.LpoRef==""){
+        <mat-card-content>
+            <app-lpo-search></app-lpo-search>
+        </mat-card-content>
+    }
+    </mat-card>
+
+@if(this.LpoRef!=""){
+
+    <mat-card>
+        <mat-card-title class="custom-sub-title"> LPO No : {{this.LpoRef}}</mat-card-title>
+        <mat-card-content>
+            <app-go-reset-receipt-returns></app-go-reset-receipt-returns>
+        </mat-card-content>
+    </mat-card>     
+
+}
+

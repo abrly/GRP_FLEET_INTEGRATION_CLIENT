@@ -1,0 +1,58 @@
+<form [formGroup]="getLogForm" (ngSubmit)="onSubmit()" style="text-align: center">
+
+  <mat-form-field appearance="fill" class="full-width" (click)="setSelectionDone()">
+    <mat-label>Select From Date</mat-label>
+    <input matInput [matDatepicker]="frmdtpicker" placeholder="Choose from date" formControlName="fromdate" >
+    <mat-datepicker-toggle matSuffix [for]="frmdtpicker"></mat-datepicker-toggle>
+    <mat-datepicker #frmdtpicker></mat-datepicker>
+
+    @if (getLogForm.get('fromdate')?.hasError('required')) {
+      <mat-error>
+          From Date is required.
+      </mat-error>
+    }
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill" class="full-width" (click)="setSelectionDone()">
+    <mat-label>Select To Date</mat-label>
+    <input matInput [matDatepicker]="todtpicker" placeholder="Choose to date" formControlName="todate">
+    <mat-datepicker-toggle matSuffix [for]="todtpicker"></mat-datepicker-toggle>
+    <mat-datepicker #todtpicker></mat-datepicker>
+
+    @if (getLogForm.get('todate')?.hasError('required')) {
+      <mat-error>
+          To Date is required.
+      </mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field (click)="setSelectionDone()">
+    <mat-label>Select Log Type</mat-label>
+    <mat-select formControlName="logcategory"  >
+      @for (type of operationTypes; track type) {
+        <mat-option [value]="type">{{type}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill" (click)="setSelectionDone()">
+    <mat-label>Select Posting Type</mat-label>
+    <mat-select formControlName="postingType">
+      @for (ptype of postingTypes; track ptype) {
+        <mat-option [value]="ptype.value">{{ptype.name}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width" (click)="setSelectionDone()">
+    <mat-label>LPO Number</mat-label>
+    <input matInput placeholder="LPO Number" formControlName="lpoRef">
+  </mat-form-field>
+  
+
+
+
+  <button mat-raised-button color="primary" (click)="setSelectionDone()" type="submit" [disabled]="getLogForm.invalid">Go</button>
+</form> 

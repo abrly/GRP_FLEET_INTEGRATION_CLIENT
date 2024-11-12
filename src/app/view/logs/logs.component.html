@@ -1,0 +1,20 @@
+<mat-card>
+        <mat-card-title class="custom-title">{{ activeMenu }}</mat-card-title>
+        <mat-card-content>
+            <br>
+            <app-searchlog></app-searchlog>
+        </mat-card-content>
+</mat-card>
+@if (fetchLogSelectionDone==true){
+<mat-card>
+        <mat-card-title class="custom-sub-title">Activity Log Details</mat-card-title>
+        <mat-card-content>
+            
+                <app-viewlogs></app-viewlogs> 
+               
+        </mat-card-content>
+</mat-card> 
+}    
+
+
+

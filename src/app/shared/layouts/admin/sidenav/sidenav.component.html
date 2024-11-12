@@ -1,4 +1,4 @@
-      <mat-nav-list class="nav">
+     <!-- <mat-nav-list class="nav">
         @for (group of menuItems; track group)
         {
         <ng-container>
@@ -11,7 +11,7 @@
             {
   
             <ng-container>
-              <a mat-list-item [routerLink]="item.route" (click)="onMenuClick(item.title)" >
+              <a mat-list-item [routerLink]="item.route" (click)="onMenuClick(item.title)"  >
                 <mat-icon>{{ item.icon }}</mat-icon>
                 &nbsp;
                 <span style="color:gray;vertical-align:top;">{{ item.label }}</span>
@@ -24,7 +24,34 @@
       }
       </mat-nav-list>
     
-  
+    -->
+
+    <mat-nav-list class="nav">
+      @for (group of menuItems; track group; let  i = $index)     
+      {
+      <ng-container>
+        <mat-expansion-panel [expanded]="i === openPanelIndex">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ group.group }}</mat-panel-title>
+          </mat-expansion-panel-header>
+
+         @for (item of group.items; track item; let  j = $index )     
+         {    
+          <ng-container>
+            <a mat-list-item 
+               [routerLink]="item.route" 
+               (click)="setActiveMenu(i, j,item.title)" 
+               [ngClass]="{ 'active-item': selectedGroupIndex === i && selectedItemIndex === j }">
+              <mat-icon>{{ item.icon }}</mat-icon>
+              &nbsp;
+              <span class="myMenuLabel">{{ item.label }}</span>
+            </a>
+          </ng-container>
+        }
+        </mat-expansion-panel>
+      </ng-container>
+    }
+    </mat-nav-list>
 
   
     
