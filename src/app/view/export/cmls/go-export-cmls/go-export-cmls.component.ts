@@ -257,6 +257,8 @@ export class GoExportCmlsComponent implements OnInit,AfterViewInit {
       this.post_cml_lines=[];
 
       let rowids = '';    
+
+      let mergedLineString='';
       
       let mergedLineDescs ='';
 
@@ -283,6 +285,31 @@ export class GoExportCmlsComponent implements OnInit,AfterViewInit {
 
         });
 
+        const items = mergedLineDescs.split(',');
+
+        interface GroupedItems {
+          [prefix: string]: string[];  
+        }
+        
+        const groupedItems: GroupedItems = items.reduce((acc: GroupedItems, item: string) => {
+
+        
+          const [prefix, suffix] = item.split(/-(.+)/);
+
+          if (!acc[prefix]) {
+            acc[prefix] = [];
+          }
+        
+          acc[prefix].push(suffix.trim());
+          return acc;
+        }, {});
+        
+        
+        mergedLineString = Object.entries(groupedItems)
+          .map(([prefix, items]) => `${prefix}- ${items.join(', ')}`)
+          .join('\n');
+
+
       }
 
     
@@ -298,7 +325,7 @@ export class GoExportCmlsComponent implements OnInit,AfterViewInit {
         remarks,
         this.authService.loggedInUserID(),
         rowids,
-        mergedLineDescs.substring(0,235),           
+        mergedLineString.substring(0,49),           
         this.post_cml_lines
       );
 

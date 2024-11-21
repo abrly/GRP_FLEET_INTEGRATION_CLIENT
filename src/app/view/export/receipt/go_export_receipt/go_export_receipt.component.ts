@@ -267,7 +267,9 @@ displayedColumns: string[] =
 
       let rowids = '';    
       
-      let mergedLineDescs ='';
+      let mergedLineString ='';
+
+      let mergedLineDescs ='';      
 
       if (selectedRows!=null){       
 
@@ -276,7 +278,7 @@ displayedColumns: string[] =
         rowids = rowids ? rowids + "," + r.RowId.toString() : r.RowId.toString();
 
         mergedLineDescs = mergedLineDescs ? mergedLineDescs + "," + r.PartKeyword + '-' + r.PartDescription : r.PartKeyword + '-' + r.PartDescription;
-
+       
         this.post_lpo_lines.push(new Post_Lpo_Line(
           
             r.SupplierNo,
@@ -292,7 +294,35 @@ displayedColumns: string[] =
 
         });
 
+
+        const items = mergedLineDescs.split(',');
+
+         interface GroupedItems {
+           [prefix: string]: string[];  
+         }
+         
+         const groupedItems: GroupedItems = items.reduce((acc: GroupedItems, item: string) => {
+
+         
+           const [prefix, suffix] = item.split(/-(.+)/);
+
+           if (!acc[prefix]) {
+             acc[prefix] = [];
+           }
+         
+           acc[prefix].push(suffix.trim());
+           return acc;
+         }, {});
+         
+         
+         mergedLineString = Object.entries(groupedItems)
+           .map(([prefix, items]) => `${prefix}- ${items.join(', ')}`)
+           .join('\n');
+
+
       }
+
+
   
   
       const { postingDate,invoiceNo,remarks } = this.lpoPostingForm.value;
@@ -307,15 +337,11 @@ displayedColumns: string[] =
         remarks,
         this.authService.loggedInUserID(),
         rowids,
-        mergedLineDescs.substring(0,235),      
+        mergedLineString.substring(0,49),      
         this.post_lpo_lines
       );
 
-      console.log('what is te reqe');
-      console.log(this.post_lpo_request);
-
       this.subPostLPO = this.dataService.postReceipts2GRP(this.post_lpo_request).subscribe((resp)=>{
-
 
         this.spinner.hide();
        
