@@ -152,7 +152,7 @@ export class GoResetReceiptComponent implements OnInit,AfterViewInit, OnDestroy 
    
 
     this.lpoResetPostingForm = this.fb.group({     
-      remarks: ['', Validators.maxLength(100)],
+      remarks: ['', Validators.required],
     });
     
     effect(() => {

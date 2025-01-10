@@ -268,13 +268,19 @@ displayedColumns: string[] =
       
       let mergedLineDescs ='';
 
-      if (selectedRows!=null){       
+      if (selectedRows!=null){
+        
+        mergedLineString =selectedRows[0]?.Reference.toString();
+
+        console.log('what is merged line string?');
+
+        console.log(mergedLineString);
 
         selectedRows.forEach(r=>{
 
         rowids = rowids ? rowids + "," + r.RowId.toString() : r.RowId.toString();
 
-        mergedLineDescs = mergedLineDescs ? mergedLineDescs + "," + r.PartKeyword + '-' + r.PartDescription : r.PartKeyword + '-' + r.PartDescription;
+       // mergedLineDescs = mergedLineDescs ? mergedLineDescs + "," + r.PartKeyword + '-' + r.PartDescription : r.PartKeyword + '-' + r.PartDescription;
 
         this.post_lpo_lines.push(new Post_Lpo_Line(
           
@@ -291,6 +297,8 @@ displayedColumns: string[] =
 
         });
 
+        
+        /*
 
         const items = mergedLineDescs.split(',');
 
@@ -315,6 +323,9 @@ displayedColumns: string[] =
         mergedLineString = Object.entries(groupedItems)
           .map(([prefix, items]) => `${prefix}- ${items.join(', ')}`)
           .join('\n');
+
+        
+          */
 
 
       }

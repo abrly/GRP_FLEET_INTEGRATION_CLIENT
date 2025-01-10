@@ -262,13 +262,17 @@ export class GoExportCmlsComponent implements OnInit,AfterViewInit {
       
       let mergedLineDescs ='';
 
-      if (selectedRows!=null){       
+      if (selectedRows!=null){         
+        
+
+        mergedLineString= selectedRows[0]?.Job_Rowid.toString();
+        
 
         selectedRows.forEach(r=>{
 
         rowids = rowids ? rowids + "," + r.Cml_row_id.toString() : r.Cml_row_id.toString();
 
-        mergedLineDescs = mergedLineDescs ? mergedLineDescs + "," + r.TaskID + '-' + r.Task_Description : r.TaskID + '-' + r.Task_Description;
+       // mergedLineDescs = mergedLineDescs ? mergedLineDescs + "," + r.TaskID + '-' + r.Task_Description : r.TaskID + '-' + r.Task_Description;
 
         this.post_cml_lines.push(new Post_Cml_Line(
           
@@ -284,6 +288,8 @@ export class GoExportCmlsComponent implements OnInit,AfterViewInit {
 
 
         });
+
+        /*
 
         const items = mergedLineDescs.split(',');
 
@@ -308,6 +314,9 @@ export class GoExportCmlsComponent implements OnInit,AfterViewInit {
         mergedLineString = Object.entries(groupedItems)
           .map(([prefix, items]) => `${prefix}- ${items.join(', ')}`)
           .join('\n');
+
+
+      */
 
 
       }

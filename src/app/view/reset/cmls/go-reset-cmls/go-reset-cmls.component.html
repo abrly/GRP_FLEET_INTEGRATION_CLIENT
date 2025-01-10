@@ -143,6 +143,13 @@
       <mat-form-field class="example-full-width" >
         <mat-label>Leave a remark</mat-label>
         <textarea matInput placeholder="" formControlName="remarks"></textarea>
+
+        @if (cmlResetPostingForm.get('remarks')?.hasError('required')) {
+          <mat-error>
+            Remarks required!
+          </mat-error>
+        }
+
       </mat-form-field>
   
      

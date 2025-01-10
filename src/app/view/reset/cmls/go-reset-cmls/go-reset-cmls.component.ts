@@ -149,7 +149,7 @@ export class GoResetCmlsComponent implements OnInit,AfterViewInit {
   constructor(private fb: FormBuilder){
 
     this.cmlResetPostingForm = this.fb.group({   
-      remarks: ['', Validators.maxLength(100)],
+      remarks: ['', Validators.required],
     });
     
     effect(() => {
